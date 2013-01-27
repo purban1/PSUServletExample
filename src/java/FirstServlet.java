@@ -43,12 +43,21 @@ public class FirstServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h2>Servlet FirstServlet at " + request.getContextPath() + "</h2>");
+            out.println("<p id=\"demo\"></p>");
             out.println("<p>Click <a href=\"index.jsp\">here</a> to go back.</p>");
+            this.insertJavaScript(out);
             out.println("</body>");
             out.println("</html>");
         } finally {            
             out.close();
         }
+    }
+    
+    private void insertJavaScript(PrintWriter out){
+        out.println("<script>");
+        out.println("document.getElementById(\"demo\").innerHTML=\"You made it to "
+                + "page 2. This line was inserted using Javascript.\";");
+        out.println("</script>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
